@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include "utils.h"
 
 int main() {
-	printf("Hello, Hacking in C!\n");
+	greet("Student");
 	return 0;
 }
