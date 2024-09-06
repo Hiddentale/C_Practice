@@ -1,0 +1,4 @@
+4       hic-s4816587-s12345678/exercise2
+4       hic-s4816587-s12345678/exercise1
+4       hic-s4816587-s12345678/exercise3
+20      hic-s4816587-s12345678

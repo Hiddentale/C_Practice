@@ -1,0 +1,5 @@
+mkdir
+cd
+ls
+nano
+du
