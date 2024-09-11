@@ -4,6 +4,7 @@
         "string_view": "c",
         "string.h": "c",
         "stdlib.h": "c",
-        "execute_bash_script.h": "c"
+        "execute_bash_script.h": "c",
+        "stdint.h": "c"
     }
 }
