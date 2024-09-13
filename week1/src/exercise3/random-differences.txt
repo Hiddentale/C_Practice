@@ -1,0 +1,10 @@
+It seems that a kernel has a system in place that randomly takes data from events that happen in the computer, for example keyboard inputs or network activity, and places those in a 'pool' of storage, which is called the 'Entropy pool'.
+/dev/random samples from this Entropy pool and uses those samples to generate 'random' values. If the Entropy pool is empty it won't be able to generate more random values, which is one of the constraints of this program.
+/dev/urandom works differently, it takes a sample from the Entropy pool, but then uses that sample as a random seed for generating 'random' values. It works similarly to how noise-maps are generated using perlin noise.
+This fixes the problem that /dev/random has, since the Entropy pool will never really empty out if you only periodically take one sample from it.
+This does mean that even if the randomness in both programs is pseudo-random, the randomness in /dev/random will be closer to true randomness.
+It is worth noting that /dev/urandom will, when given an empty Entropy pool, generate pseudo-random numbers with a pseudo-random generated seed, which could lead to bad security.
+
+https://linuxhandbook.com/dev-random-urandom/
+https://unix.stackexchange.com/questions/324209/when-to-use-dev-random-vs-dev-urandom
+https://en.wikipedia.org/wiki//dev/random
