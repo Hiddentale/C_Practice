@@ -1,0 +1,15 @@
+0x7ffddb22962f		c	3	1	0x7ffddb229630
+0x7ffddb229630		d	4	1	0x7ffddb229631
+0x7ffddb229631		i	9	1	0x7ffddb229632
+0x7ffddb229632		b	2	2	0x7ffddb229634
+0x7ffddb229634		a	1	4	0x7ffddb229638
+0x7ffddb229638		e	5	8	0x7ffddb229640
+0x7ffddb229640		g	7	8	0x7ffddb229648
+0x7ffddb229648		h	8	8	0x7ffddb229650
+0x7ffddb229652		f	{6,6,6}	6	0x7ffddb229658
+
+Command we used: ./exercise1 > exercise1.txt; sort -g exercise1.txt -o exercise1.txt
+Like it was mentioned in the lecture, the compiler reordered the variables in memory to make it work more efficient, it padded some variables
+and changed the position of others such that, if possible, some of the variables do not overlap 2 chunks of memory.
+
+The short array starts at a different address different from h, the unsigned int long. This is most likely done to make sure that the whole array is part of the same 'chunk'/bytes of memory.
