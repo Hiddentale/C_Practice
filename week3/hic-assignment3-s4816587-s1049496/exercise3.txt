@@ -1,0 +1,16 @@
+What I think will happen:
+(a) Since x[4] is just an array with int32_t values, x is a pointer to the first element in this array, thus by looking at &x, we get a pointer to a pointer?     
+(b) in32_t uses 4 bytes, which means that I expect our adress to shift by 4 bytes towards 0x7ffc0ffeef24
+(c) I would honestly not know what happens here, since we increment the **
+(d) Since x points to the first element of the array, by dereferencing it we get that element: 23
+(e) Since x points to the first element of the array and x[2] is the same as *(x + 2), we should get 28?
+(f) *(x + 3) is a dereferencing of x[3] = (1<<7) = 2^7 since we bitshift 7 times. We then add x[0], and thus get 2^7 + 23?
+
+What actually happened:
+(a) It seems there is no difference between just invoking x and &x when we talk about an array, apparantly x decays to &x[0], which is the same as 
+    &x since x points to the start of the array.
+(b) I was correct here
+(c) I was correct here
+(d) I was correct here
+(e) I was correct here
+(f) I was correct here

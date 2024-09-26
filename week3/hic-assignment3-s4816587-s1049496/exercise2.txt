@@ -1,0 +1,10 @@
+I have a very powerful computer, so whenever I run the search algorithm I get the same value of 21029387592 bytes, which implies there is some artifical fixed limit that is always available
+but I can imagine that on a pc that does not have that much memory available, it could be that malloc will notalways have the same amount of memory to allocate. 
+This would due to there literally not being that much space left to allocate to.
+
+After using calloc with the same binary search we almost got the same value, it differed in just some a thousand bytes, output: 21029386552 bytes. The manual tells us that calloc initializes the memory
+and returns a pointer to the allocated memory while malloc does not initalize the memory, it only allocates the specific memory. It would probably be better to use calloc, since our memory will atleast
+be initialized as zero's and thus have predictable behaviour compared to an uninitialized array?
+
+If some hypothetical program does not check whether malloc succeeded before writing data to the resulting pointer, it might be that we overwrite memory that is used by some other program, thus we get undefined
+behaviour and our computer might explode.
