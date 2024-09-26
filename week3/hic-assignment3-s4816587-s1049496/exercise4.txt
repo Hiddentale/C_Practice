@@ -1,0 +1,2 @@
+The programm is killed by the system, I think this might happen because it allocates to much heap memory towards itself?
+Might also be that malloc doesn't free the memory properly because the previous pointer value to the allocated memory is overwritten/corrupted?

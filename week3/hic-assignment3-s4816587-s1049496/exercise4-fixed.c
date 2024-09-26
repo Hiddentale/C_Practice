@@ -1,24 +1,24 @@
-// vim: shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 #include <stdlib.h>
 #include <stdio.h>
 int main(void) {
 	int i,j;
+	unsigned long long k = 0;
 	unsigned long long **m, **mt;
 	while (1) {
 		// allocate matrix m
 		m = malloc(1000 * sizeof(unsigned long long*));
-		if (m == NULL) { return -1; }
+		if (!m) { return -1; }
 		for (i = 0; i < 1000; i++) {
 			m[i] = malloc(1000 * sizeof(unsigned long long));
-			if (m[i] == NULL) { return -1; }
+			if (!m[i]) { return -1; }
 		}
 
 		// allocate matrix mt
 		mt = malloc(1000 * sizeof(unsigned long long*));
-		if (mt == NULL) { return -1; }
+		if (!mt) { return -1; }
 		for (i = 0; i < 1000; i++) {
 			mt[i] = malloc(1000 * sizeof(unsigned long long));
-			if (mt[i] == NULL) { return -1; }
+			if (!mt[i]) { return -1; }
 		}
 
 		// fill matrix m with values
@@ -36,8 +36,14 @@ int main(void) {
 		}
 
 		// free matrices m and mt
+		for (i = 0; i < 1000; i++) {
+    		free(m[i]);
+    		free(mt[i]);
+		}
 		free(m);
 		free(mt);
+		k++;
+		printf("Finished cycle: %lld\n", k);
 	}
 	return 0;
 }
