@@ -1,2 +1,6 @@
-The programm is killed by the system, I think this might happen because it allocates to much heap memory towards itself?
-Might also be that malloc doesn't free the memory properly because the previous pointer value to the allocated memory is overwritten/corrupted?
+The programm is killed by the system, I think this might happen because it allocates too much heap memory towards itself?
+Might also be that malloc doesn't free the memory properly because the previous pointer value to the allocated memory is overwritten/corrupted? It seems this is not the case
+because the scope makes sure the pointers are always the same.
+I thought about this some more and see that there is a significant problem, m and mt are freed, but every m[i] and mt[i] is never freed, which causes a memory leak.
+
+I would fix this by actually freeing all the memory that was allocated before we start on a new iteration of the while loop.

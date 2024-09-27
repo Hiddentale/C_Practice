@@ -1,0 +1,19 @@
+After running the file we got this error
+
+gcc -Wall -Wextra -fno-stack-protector -o exercise5 exercise5.c
+exercise5.c: In function ‘main’:
+exercise5.c:15:13: warning: assignment to ‘char’ from ‘char *’ makes integer from pointer without a cast [-Wint-conversion]
+   15 |         *s1 = "s4816587";
+      |             ^
+
+By definition s1 is a char* to a piece of reserved memory on the heap, thus when we dereference this pointer we get a 1 byte piece of memory that
+we try to write an array of characters to. The compiler can only assume that this is intended behaviour and thus does the only thing it can
+it converts the character to an integer and then converts the character array to an integer and places its value at this point in memory.
+Thus we will not actually store our string.
+
+
+We need to allocate 9 bytes for a 8 character array because we need a termination value at the end of the array. Hence that is also why printf knows
+when to stop printing out s1, it encounters the termination value and thus stops.
+
+I did not have enough time this week to finish exercise5 sadly, I understand how to find stack/heap adresses and manipulate them, but writing to the heap/stack is still
+a mystery to me.
