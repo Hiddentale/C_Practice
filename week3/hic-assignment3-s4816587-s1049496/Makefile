@@ -1,10 +1,13 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -fno-stack-protector
 
-all: exercise1 exercise2 exercise5
+all: exercise1 exercise2 exercise5 exercise1bow
 
 exercise1: exercise1.c otherfuncs.o
 	$(CC) $(CFLAGS) -o exercise1 exercise1.c otherfuncs.o
+
+exercise1bow: exercise1bow.c otherfuncs.o
+	$(CC) $(CFLAGS) -o exercise1bow exercise1bow.c otherfuncs.o
 
 otherfuncs.o: otherfuncs.c
 	$(CC) $(CFLAGS) -c otherfuncs.c
